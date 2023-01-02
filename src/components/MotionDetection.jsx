@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,7 +14,7 @@ import { db } from '../config/firebase';
 import { onValue, ref } from 'firebase/database';
 import Spinner from './Spinner';
 import { formatUnix } from '../utils/timeFormat';
-import { mobileQuery } from '../utils/mobileQuery';
+import ReadingsContext from '../store/readingsContext';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -33,42 +33,23 @@ const options = {
 
 const DistanceChart = () => {
   const [loading, setLoading] = useState(true);
+  const { distanceArr, timeArr } = useContext(ReadingsContext);
   const [data, setData] = useState({});
-  const isMobile = mobileQuery();
-
-  const getReadings = () => {
-    const query = ref(db, 'UsersData/3n3WlmxowFdI5DjHN2jGH3rW4vF3/readings');
-    return onValue(query, (snapshot) => {
-      const data = snapshot.val();
-      const distanceArr = [];
-      const timeArr = [];
-
-      if (snapshot.exists()) {
-        Object.values(data).map((reading) => {
-          distanceArr.push(reading.distance);
-          timeArr.push(formatUnix(reading.timestamp));
-        });
-      }
-      setData({
-        labels: timeArr,
-        datasets: [
-          {
-            label: 'Distance (cm)',
-            data: distanceArr,
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
-        ],
-      });
-      setLoading(false);
-    });
-  };
 
   useEffect(() => {
-    setLoading(true);
-
-    getReadings();
-  }, []);
+    setData({
+      labels: timeArr,
+      datasets: [
+        {
+          label: 'Distance (cm)',
+          data: distanceArr,
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+      ],
+    });
+    setLoading(false);
+  }, [distanceArr, timeArr]);
 
   if (loading)
     return (
