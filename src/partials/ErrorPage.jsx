@@ -1,5 +1,5 @@
 import React from 'react'
-import Image404 from '../assets/404bg.webp'
+import { Link } from 'react-router-dom'
 
 const Error404Page = () => {
   return (
@@ -13,13 +13,12 @@ const Error404Page = () => {
           <p className='mt-4 mb-8 dark:text-gray-400'>
             But dont worry, you can find plenty of other things on our homepage.
           </p>
-          <a
-            rel='noopener noreferrer'
-            href='/'
+          <Link
+            to='/'
             className='rounded bg-violet-500 px-8 py-3 font-medium text-white shadow-2xl transition-all duration-200 hover:bg-violet-600 hover:shadow-lg'
           >
             Back to homepage
-          </a>
+          </Link>
         </div>
       </div>
     </section>
