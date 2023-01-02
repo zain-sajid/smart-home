@@ -1,5 +1,5 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState, useEffect } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
   CalendarIcon,
@@ -9,24 +9,27 @@ import {
   InboxIcon,
   UsersIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { Outlet } from 'react-router-dom'
+} from '@heroicons/react/24/outline';
+import { Outlet } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+  { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
   { name: 'Team', href: '#', icon: UsersIcon, current: false },
   { name: 'Projects', href: '#', icon: FolderIcon, current: false },
   { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
   { name: 'Documents', href: '#', icon: InboxIcon, current: false },
   { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
-]
+  { name: 'Test', href: '/test', icon: ChartBarIcon, current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Sidebar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -86,27 +89,27 @@ export default function Sidebar() {
                     </div>
                     <nav className='mt-5 space-y-1 px-2'>
                       {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'bg-gray-900 text-white'
-                              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'group flex items-center rounded-md px-2 py-2 text-base font-medium',
-                          )}
-                        >
-                          <item.icon
+                        <Link key={item.name} to={item.href}>
+                          <div
                             className={classNames(
                               item.current
-                                ? 'text-gray-300'
-                                : 'text-gray-400 group-hover:text-gray-300',
-                              'mr-4 h-6 w-6 flex-shrink-0',
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'group flex items-center rounded-md px-2 py-2 text-base font-medium',
                             )}
-                            aria-hidden='true'
-                          />
-                          {item.name}
-                        </a>
+                          >
+                            <item.icon
+                              className={classNames(
+                                item.current
+                                  ? 'text-gray-300'
+                                  : 'text-gray-400 group-hover:text-gray-300',
+                                'mr-4 h-6 w-6 flex-shrink-0',
+                              )}
+                              aria-hidden='true'
+                            />
+                            {item.name}
+                          </div>
+                        </Link>
                       ))}
                     </nav>
                   </div>
@@ -152,25 +155,27 @@ export default function Sidebar() {
               </div>
               <nav className='mt-5 flex-1 space-y-1 px-2'>
                 {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
-                    )}
-                  >
-                    <item.icon
+                  <Link key={item.name} to={item.href}>
+                    <div
                       className={classNames(
-                        item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-3 h-6 w-6 flex-shrink-0',
+                        item.current
+                          ? 'bg-gray-900 text-white'
+                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
                       )}
-                      aria-hidden='true'
-                    />
-                    {item.name}
-                  </a>
+                    >
+                      <item.icon
+                        className={classNames(
+                          item.current
+                            ? 'text-gray-300'
+                            : 'text-gray-400 group-hover:text-gray-300',
+                          'mr-3 h-6 w-6 flex-shrink-0',
+                        )}
+                        aria-hidden='true'
+                      />
+                      {item.name}
+                    </div>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -206,11 +211,11 @@ export default function Sidebar() {
               <Bars3Icon className='h-6 w-6' aria-hidden='true' />
             </button>
           </div>
-          <main className='mx-auto max-w-7xl flex-1 py-6 px-4 sm:px-6 md:px-8'>
+          <main className='mx-auto flex h-full w-full max-w-7xl flex-1 bg-amber-200 py-6 px-4 sm:px-6 md:px-8'>
             <Outlet />
           </main>
         </div>
       </div>
     </>
-  )
+  );
 }
