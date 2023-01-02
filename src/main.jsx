@@ -8,6 +8,7 @@ import Intrusions from './components/Intrusions';
 import './index.css';
 import { ModalProvider } from './store/modalContext';
 import { ReadingsProvider } from './store/readingsContext';
+import DoorLock from './components/DoorLock';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: '/door',
+        element: <DoorLock />,
+      },
       {
         path: 'distance',
         element: <DistanceChart />,

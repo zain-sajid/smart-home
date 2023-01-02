@@ -2,18 +2,18 @@ import { Fragment, useState, useContext } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
-  HomeIcon,
   XMarkIcon,
   SignalIcon,
   NoSymbolIcon,
+  LockClosedIcon,
 } from '@heroicons/react/24/outline';
 import { Outlet } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { ModalContext } from '../store/modalContext';
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: HomeIcon },
-  { name: 'Motion Detection', href: '/distance', icon: SignalIcon },
+  { name: 'Door Lock', href: '/door', icon: LockClosedIcon },
+  { name: 'Motion Sensor', href: '/distance', icon: SignalIcon },
   { name: 'Intrusions', href: '/intrusions', icon: NoSymbolIcon },
 ];
 

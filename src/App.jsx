@@ -5,7 +5,6 @@ function App() {
   return (
     <div className='w-full'>
       <Sidebar />
-
       <MyModal />
     </div>
   );
