@@ -1,21 +1,20 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useContext } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
-  UsersIcon,
   XMarkIcon,
+  SignalIcon,
+  NoSymbolIcon,
 } from '@heroicons/react/24/outline';
 import { Outlet } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
+import { ModalContext } from '../store/modalContext';
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
-  { name: 'Distance', href: '/distance', icon: ChartBarIcon, current: false },
+  { name: 'Dashboard', href: '/', icon: HomeIcon },
+  { name: 'Motion Detection', href: '/distance', icon: SignalIcon },
+  { name: 'Intrusions', href: '/intrusions', icon: NoSymbolIcon },
 ];
 
 function classNames(...classes) {
@@ -23,6 +22,7 @@ function classNames(...classes) {
 }
 
 export default function Sidebar() {
+  const { openModal } = useContext(ModalContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { pathname } = useLocation();
 
@@ -82,7 +82,7 @@ export default function Sidebar() {
                         alt='Your Company'
                       />
                     </div>
-                    <nav className='mt-5 space-y-1 px-2'>
+                    <nav className='mt-5 space-y-4 px-2'>
                       {navigation.map((item) => (
                         <Link key={item.name} to={item.href}>
                           <div
@@ -90,7 +90,7 @@ export default function Sidebar() {
                               pathname === item.href
                                 ? 'bg-gray-900 text-white'
                                 : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                              'group flex items-center rounded-md px-2 py-2 text-base font-medium',
+                              'group flex items-center rounded-md px-2 py-4 text-base font-medium',
                             )}
                           >
                             <item.icon
@@ -121,7 +121,7 @@ export default function Sidebar() {
                         <div className='ml-3'>
                           <p className='text-base font-medium text-white'>Tom Cook</p>
                           <p className='text-sm font-medium text-gray-400 group-hover:text-gray-300'>
-                            View profile
+                            Smart Home
                           </p>
                         </div>
                       </div>
@@ -156,7 +156,7 @@ export default function Sidebar() {
                         pathname === item.href
                           ? 'bg-gray-900 text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
+                        'group flex items-center rounded-md px-2 py-4 text-sm font-medium',
                       )}
                     >
                       <item.icon
@@ -174,7 +174,7 @@ export default function Sidebar() {
                 ))}
               </nav>
             </div>
-            <div className='flex flex-shrink-0 bg-gray-700 p-4'>
+            <div className='flex flex-shrink-0 bg-gray-700 p-4' onClick={openModal}>
               <a href='#' className='group block w-full flex-shrink-0'>
                 <div className='flex items-center'>
                   <div>
@@ -187,7 +187,7 @@ export default function Sidebar() {
                   <div className='ml-3'>
                     <p className='text-sm font-medium text-white'>Tom Cook</p>
                     <p className='text-xs font-medium text-gray-300 group-hover:text-gray-200'>
-                      View profile
+                      Smart Home
                     </p>
                   </div>
                 </div>
