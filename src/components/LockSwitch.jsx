@@ -1,23 +1,11 @@
 import { Switch } from '@headlessui/react';
-import { getDatabase, ref, update } from 'firebase/database';
+import { toggleLock } from '../utils/doorLock';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const LockSwitch = ({ enabled }) => {
-  const db = getDatabase();
-
-  const toggleLock = () => {
-    const data = {
-      digital: {
-        4: enabled ? 0 : 1,
-      },
-    };
-
-    return update(ref(db, 'UsersData/3n3WlmxowFdI5DjHN2jGH3rW4vF3/outputs'), data);
-  };
-
   return (
     <Switch
       checked={enabled}

@@ -9,6 +9,8 @@ import './index.css';
 import { ModalProvider } from './store/modalContext';
 import { ReadingsProvider } from './store/readingsContext';
 import DoorLock from './components/DoorLock';
+import HumiditySensor from './components/HumiditySensor';
+import TemperatureSensor from './components/TemperatureSensor';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/door',
+        path: 'door',
         element: <DoorLock />,
       },
       {
@@ -28,16 +30,24 @@ const router = createBrowserRouter([
         path: 'intrusions',
         element: <Intrusions />,
       },
+      {
+        path: 'humidity',
+        element: <HumiditySensor />,
+      },
+      {
+        path: 'temperature',
+        element: <TemperatureSensor />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ReadingsProvider>
-      <ModalProvider>
+    <ModalProvider>
+      <ReadingsProvider>
         <RouterProvider router={router} />
-      </ModalProvider>
-    </ReadingsProvider>
+      </ReadingsProvider>
+    </ModalProvider>
   </React.StrictMode>,
 );

@@ -10,11 +10,15 @@ import {
 import { Outlet } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { ModalContext } from '../store/modalContext';
+import { MaterialSymbolsHumidityHigh, TablerTemperature } from '../assets/Icons';
+import Josephine from '../assets/Josephine.jpg';
 
 const navigation = [
   { name: 'Door Lock', href: '/door', icon: LockClosedIcon },
-  { name: 'Motion Sensor', href: '/distance', icon: SignalIcon },
   { name: 'Intrusions', href: '/intrusions', icon: NoSymbolIcon },
+  { name: 'Motion Sensor', href: '/distance', icon: SignalIcon },
+  { name: 'Humidity Sensor', href: '/humidity', icon: MaterialSymbolsHumidityHigh },
+  { name: 'Temperature Sensor', href: '/temperature', icon: TablerTemperature },
 ];
 
 function classNames(...classes) {
@@ -74,15 +78,13 @@ export default function Sidebar() {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className='h-0 flex-1 overflow-y-auto pt-5 pb-4'>
+                  <div className='h-0 flex-1  pt-5 pb-4'>
                     <div className='flex flex-shrink-0 items-center px-4'>
-                      <img
-                        className='h-8 w-auto'
-                        src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
-                        alt='Your Company'
-                      />
+                      <h1 className='mb-2 w-full text-left text-3xl font-semibold text-white'>
+                        SMART HOME
+                      </h1>
                     </div>
-                    <nav className='mt-5 space-y-4 px-2'>
+                    <nav className='mt-5 space-y-4  px-2'>
                       {navigation.map((item) => (
                         <Link key={item.name} to={item.href}>
                           <div
@@ -114,12 +116,12 @@ export default function Sidebar() {
                         <div>
                           <img
                             className='inline-block h-10 w-10 rounded-full'
-                            src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                            alt=''
+                            src={Josephine}
+                            alt='Josephine Frida'
                           />
                         </div>
                         <div className='ml-3'>
-                          <p className='text-base font-medium text-white'>Tom Cook</p>
+                          <p className='text-base font-medium text-white'>Josephine Frida</p>
                           <p className='text-sm font-medium text-gray-400 group-hover:text-gray-300'>
                             Smart Home
                           </p>
@@ -142,13 +144,11 @@ export default function Sidebar() {
           <div className='flex min-h-0 flex-1 flex-col bg-gray-800'>
             <div className='flex flex-1 flex-col overflow-y-auto pt-5 pb-4'>
               <div className='flex flex-shrink-0 items-center px-4'>
-                <img
-                  className='h-8 w-auto'
-                  src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
-                  alt='Your Company'
-                />
+                <h1 className='mb-2 w-full text-left text-3xl font-semibold text-white'>
+                  SMART HOME
+                </h1>
               </div>
-              <nav className='mt-5 flex-1 space-y-1 px-2'>
+              <nav className='mt-5 flex-1 space-y-4 px-2'>
                 {navigation.map((item) => (
                   <Link key={item.name} to={item.href}>
                     <div
@@ -156,7 +156,7 @@ export default function Sidebar() {
                         pathname === item.href
                           ? 'bg-gray-900 text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'group flex items-center rounded-md px-2 py-4 text-sm font-medium',
+                        'group flex items-center rounded-md px-3 py-5 text-sm font-medium',
                       )}
                     >
                       <item.icon
@@ -179,13 +179,13 @@ export default function Sidebar() {
                 <div className='flex items-center'>
                   <div>
                     <img
-                      className='inline-block h-9 w-9 rounded-full'
-                      src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                      alt=''
+                      className='inline-block h-10 w-10 rounded-full'
+                      src={Josephine}
+                      alt='Josephine Frida'
                     />
                   </div>
                   <div className='ml-3'>
-                    <p className='text-sm font-medium text-white'>Tom Cook</p>
+                    <p className='text-sm font-medium text-white'>Josephine Frida</p>
                     <p className='text-xs font-medium text-gray-300 group-hover:text-gray-200'>
                       Smart Home
                     </p>

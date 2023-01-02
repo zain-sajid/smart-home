@@ -23,14 +23,14 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Ultrasonic Sensor Data',
+      text: 'Humidity Sensor Data',
     },
   },
 };
 
-const DistanceChart = () => {
+const HumiditySensorChart = () => {
   const [loading, setLoading] = useState(true);
-  const { distanceArr, timeArr } = useContext(ReadingsContext);
+  const { humidity, timeArr } = useContext(ReadingsContext);
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -38,15 +38,15 @@ const DistanceChart = () => {
       labels: timeArr,
       datasets: [
         {
-          label: 'Distance (cm)',
-          data: distanceArr,
+          label: 'Humidity (%)',
+          data: humidity,
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },
       ],
     });
     setLoading(false);
-  }, [distanceArr, timeArr]);
+  }, [humidity, timeArr]);
 
   if (loading)
     return (
@@ -59,10 +59,9 @@ const DistanceChart = () => {
     <div className='min-h-[90vh] w-full flex-1 flex-col items-center justify-center px-4 py-6 sm:px-6 lg:px-8'>
       <div className='sm:flex sm:items-center'>
         <div className='sm:flex-auto'>
-          <h1 className='text-xl font-semibold text-gray-900 lg:text-4xl'>Motion Sensor Graph</h1>
+          <h1 className='text-xl font-semibold text-gray-900 lg:text-4xl'>Humidity Sensor Graph</h1>
           <p className='mt-2 text-sm text-gray-700'>
-            A real time graph of the distance measured by the ultrasonic sensor. Distance is
-            measured in cm.
+            A real time graph of the humidity measured by the sensor.
           </p>
         </div>
       </div>
@@ -73,4 +72,4 @@ const DistanceChart = () => {
   );
 };
 
-export default DistanceChart;
+export default HumiditySensorChart;
