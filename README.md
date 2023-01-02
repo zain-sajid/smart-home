@@ -12,18 +12,7 @@
 ![Contributors](https://img.shields.io/github/contributors/zain-sajid/smart-home?color=dark-green) ![Forks](https://img.shields.io/github/forks/zain-sajid/smart-home?style=social) ![Stargazers](https://img.shields.io/github/stars/zain-sajid/smart-home?style=social) ![Issues](https://img.shields.io/github/issues/zain-sajid/smart-home) ![License](https://img.shields.io/github/license/zain-sajid/smart-home)
 
 ## About The Project
-
-![Screen Shot](images/screenshot.png)
-
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
-
-Here's why:
-
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
+This is a frontend for our IOT Course Project. We are monitoring Temperature, Humidity and Intrusion(Proximity of how close an object is to the door). We can also control the door lock using the web portal.
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
@@ -35,11 +24,6 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 - [TailwindCSS](https://tailwindcss.com/)
 - [ChartJS](https://www.chartjs.org/)
 
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
@@ -65,3 +49,4 @@ Contributions are what make the open source community such an amazing place to b
 ## License
 
 Distributed under the MIT License. See [LICENSE](https://github.com/zain-sajid/smart-home/blob/main/LICENSE.md) for more information.
+
