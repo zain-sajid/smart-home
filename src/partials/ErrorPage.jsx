@@ -3,19 +3,26 @@ import Image404 from '../assets/404bg.webp'
 
 const Error404Page = () => {
   return (
-    <div className='relative h-screen overflow-hidden bg-indigo-900'>
-      <img src={Image404} className='absolute h-full w-full object-cover' />
-      <div className='absolute inset-0 bg-black opacity-25'></div>
-      <div className='container relative z-10 mx-auto flex items-center px-6 py-32 md:px-12 xl:py-40'>
-        <div className='relative z-10 flex w-full flex-col items-center font-mono'>
-          <h1 className='mt-4 text-center text-5xl font-extrabold leading-tight text-white'>
-            You are all alone here
-          </h1>
-
-          <p className='my-44 animate-bounce text-8xl font-extrabold text-white'>404</p>
+    <section className='flex h-full items-center p-16 dark:bg-gray-900 dark:text-gray-100'>
+      <div className='container mx-auto my-8 flex flex-col items-center justify-center px-5'>
+        <div className='max-w-md text-center'>
+          <h2 className='mb-8 text-9xl font-extrabold dark:text-gray-600'>
+            <span className='sr-only'>Error</span>404
+          </h2>
+          <p className='text-2xl font-semibold md:text-3xl'>Sorry, we couldn't find this page.</p>
+          <p className='mt-4 mb-8 dark:text-gray-400'>
+            But dont worry, you can find plenty of other things on our homepage.
+          </p>
+          <a
+            rel='noopener noreferrer'
+            href='/'
+            className='rounded bg-violet-500 px-8 py-3 font-medium text-white shadow-2xl transition-all duration-200 hover:bg-violet-600 hover:shadow-lg'
+          >
+            Back to homepage
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
