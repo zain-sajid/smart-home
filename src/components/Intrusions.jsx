@@ -4,8 +4,8 @@ import { extractDate, extractTime } from '../utils/timeFormat';
 import Spinner from './Spinner';
 
 const Intrusions = () => {
-  const [loading, setLoading] = useState(true);
-  const { intrusions } = useContext(ReadingsContext);
+  const { intrusions, loading } = useContext(ReadingsContext);
+  console.log('intrusions', loading);
 
   const [intrusionsTransformed, setIntrusionsTransformed] = useState([]);
 
@@ -18,7 +18,6 @@ const Intrusions = () => {
       };
     });
     setIntrusionsTransformed(intrusionsTransformed);
-    setLoading(false);
   }, [intrusions]);
 
   if (loading)

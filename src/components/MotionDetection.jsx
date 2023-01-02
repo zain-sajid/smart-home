@@ -34,7 +34,7 @@ const DistanceChart = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    setData({
+    setData(() => ({
       labels: timeArr,
       datasets: [
         {
@@ -44,11 +44,11 @@ const DistanceChart = () => {
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },
       ],
-    });
+    }));
     setLoading(false);
   }, [distanceArr, timeArr]);
 
-  if (loading)
+  if (loading || !data)
     return (
       <div className='flex min-h-[90vh] w-full items-center justify-center'>
         <Spinner />

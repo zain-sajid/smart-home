@@ -7,6 +7,7 @@ import ModalContext from './modalContext';
 export const ReadingsContext = createContext();
 
 export const ReadingsProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const { openModal } = useContext(ModalContext);
 
   const THRESHOLD_DISTANCE = parseInt(import.meta.env.VITE_THRESHOLD_DISTANCE);
@@ -68,6 +69,7 @@ export const ReadingsProvider = ({ children }) => {
       setTotalIntrusions(() => intrusions.length);
       setHumidity(() => humidityArr);
       setTemperature(() => temperatureArr);
+      setLoading(false);
     });
   };
 
@@ -106,6 +108,7 @@ export const ReadingsProvider = ({ children }) => {
         totalIntrusions,
         humidity,
         temperature,
+        loading,
       }}
     >
       {children}
