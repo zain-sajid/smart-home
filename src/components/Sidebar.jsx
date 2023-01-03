@@ -11,7 +11,7 @@ import { Outlet } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { ModalContext } from '../store/modalContext';
 import { MaterialSymbolsHumidityHigh, TablerTemperature } from '../assets/Icons';
-import Josephine from '../assets/Josephine.jpg';
+import Josephine from '../assets/josephine.jpg';
 
 const navigation = [
   { name: 'Door Lock', href: '/door', icon: LockClosedIcon },
