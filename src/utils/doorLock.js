@@ -1,6 +1,6 @@
 import { getDatabase, ref, set } from 'firebase/database';
 
-export const toggleLock = () => {
+export const toggleLock = (enabled) => {
   const db = getDatabase();
   const data = enabled ? 0 : 1;
   return set(ref(db, 'UsersData/3n3WlmxowFdI5DjHN2jGH3rW4vF3/outputs/digital/4'), data);
