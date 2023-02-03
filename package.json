@@ -14,7 +14,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
-    "chart.js": "^4.1.1",
+    "chart.js": "^4.1.2",
     "firebase": "^9.15.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
